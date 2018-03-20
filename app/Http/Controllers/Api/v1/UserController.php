@@ -39,4 +39,28 @@ class UserController extends Controller
     }//register
 
 
+	/**
+	 * @api {get} /api/v1/user-details  Get User Details
+	 *
+	 * @apiHeaderExample {json} Header-Example:
+	 * {
+	 *      "Accept"        : "application/json"
+	 *      "Authorization" : "Bearer d1ud5yQnjO3eeg64ZkmYupwGh6fKZJ4W"
+	 * }
+	 */
+	public function details()
+	{
+		$user = $this->userService->getUser();
+
+		if (!$user) {
+			return $this->apiUserResp->fail("User not found");
+		}
+
+		/**
+		 * @var $user User
+		 */
+		return $this->apiUserResp->userData($user);
+
+	}//details
+
 }// UserController

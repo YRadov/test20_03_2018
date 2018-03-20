@@ -17,9 +17,15 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-/** CLIENT AUTH */
-Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
+/** USER AUTH */
+Route::group( [ 'prefix' => 'v1', 'namespace' => 'Api\v1' ], function () {
 
-	Route::post('/registration', "UserController@register")->name('register');
-}
-);//Route::group Client
+	Route::post( '/registration', "UserController@register" )->name( 'register' );
+} );
+
+Route::group( [ 'prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth:api' ], function () {
+
+	/** USER */
+	Route::get( '/user-details', "UserController@details" )->name( 'user_details' );
+
+} );

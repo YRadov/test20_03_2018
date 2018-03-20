@@ -24,6 +24,10 @@ class UserRepository extends ADefaultRepository
 				'api_token'    => str_random(60),
 			]
 		);
-
-	}
+	}//addNew
+	
+	public function getById($user_id)
+	{
+		return $this->getOne($user_id);
+	}//getById
 }//UserRepository

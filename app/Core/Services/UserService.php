@@ -25,4 +25,11 @@ class UserService
 		return $this->userRep->addNew($email, $password);
 	}// createNew
 
+
+	public function getUser()
+	{
+		$user_id = \Auth::user()->id;
+		return $this->userRep->getById($user_id);
+	}//getUser
+
 }// UserService

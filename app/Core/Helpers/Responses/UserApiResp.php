@@ -10,10 +10,15 @@ class UserApiResp extends AApiResp
 {
     public function registerUser(User $user)
     {
-        $resp = new UserTransformer($user);
+        $resp = new UserTransformer($user, ['email', 'created']);
 
         return $resp;
     }//registerClient
 
+	public function userData(User $user)
+	{
+		$resp = new UserTransformer($user, ['id', 'token', 'created']);
 
+		return $resp;
+	}//userData
 }//AuthApiResp
