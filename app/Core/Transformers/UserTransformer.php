@@ -24,7 +24,11 @@ class UserTransformer extends ATransformer
             'token'        => $this->user->api_token,
         ];
 
-        return array_except($user, $this->guard);
+        $resp = [
+			"status" => self::SUCCESS,
+	        "data" => $user
+        ];
+        return array_except($resp, $this->guard);
 
     }//toArray
 

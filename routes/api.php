@@ -20,6 +20,6 @@ use Illuminate\Http\Request;
 /** CLIENT AUTH */
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
 
-	Route::post('/register', "UserController@register")->name('register');
+	Route::post('/registration', "UserController@register")->name('register');
 }
 );//Route::group Client

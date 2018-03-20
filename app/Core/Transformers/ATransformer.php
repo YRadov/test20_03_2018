@@ -5,7 +5,10 @@ namespace App\Core\Transformers;
 
 abstract class ATransformer
 {
-    protected $guard = [];
+	const SUCCESS = 1;
+	const FAIL  = 0;
+
+	protected $guard = [];
 
     abstract public function toArray();
 
