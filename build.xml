@@ -44,7 +44,7 @@
     <!--***************************************************************************-->
     <target name="make_controller">
         <echo msg="Create Controller..."/>
-        <exec command="php artisan make:controller Api/v1/Rating/RatingController" dir="."/>
+        <exec command="php artisan make:controller Api/v1/UserController" dir="."/>
     </target>
 
     <target name="make_model">
