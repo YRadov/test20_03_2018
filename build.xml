@@ -49,8 +49,7 @@
 
     <target name="make_model">
         <echo msg="Create Model..."/>
-        <exec command="php artisan make:model Core/Models/Rating" dir="."/>
-        <exec command="php artisan make:model Core/Models/PushMessage --migration" dir="."/>
+        <exec command="php artisan make:model Core/Models/Post" dir="."/>
     </target>
 
     <target name="make_form">
@@ -92,7 +91,7 @@
     <target name="migration_new">
         <echo msg="Create migration..."/>
         <!--<exec command="php artisan make:migration create_user_settings_table &#45;&#45;create=user_settings" dir="."/>-->
-        <exec command="php artisan make:migration create_stars_phrases_table --create=stars_phrases" dir="."/>
+        <exec command="php artisan make:migration create_posts_table --create=posts" dir="."/>
     </target>
 
     <target name="migration_edit">
