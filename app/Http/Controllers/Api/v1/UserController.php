@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Core\Helpers\Responses\UserApiResp;
 use App\Core\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\RegisterRequest;
 
 class UserController extends Controller
 {
@@ -17,8 +18,12 @@ class UserController extends Controller
 		$this->apiUserResp = $apiUserResp;
 	}//__construct
 
-	public function register()
+	public function register(RegisterRequest $request)
     {
-        return 'test';
-    }
+    	return $request->all();
+    	$user = $this->userService->createNew($request->all());
+        return $user;
+    }//register
+
+
 }// UserController
