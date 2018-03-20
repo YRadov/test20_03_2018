@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Sample" basedir="." default="build">
+
+
+    <target name="apidoc">
+        <echo msg="Created docs for api..."/>
+        <exec command="apidoc -i app/ -o public/apidoc/ -t public/apidoc-template" dir="."/>
+    </target>
+
+
+    <target name="ide_helper_docs">
+        <echo msg="Created ide-helper docs..."/>
+        <exec command="echo y| php artisan ide-helper:models  --dir='app/Core/Model'" dir="."/>
+    </target>
+
+
+    <target name="app_key">
+        <echo msg="Application Key creating ..."/>
+        <exec command="php artisan key:generate" dir="."/>
+    </target>
+
+
+    <target name="composer_dump">
+        <echo msg="Composer dampautoloading ..."/>
+        <exec command="composer dumpautoload -o" dir="."/>
+    </target>
+
+    <target name="bower_install">
+        <echo msg="Bower install package ..."/>
+        <exec command="bower install slick-carousel" dir="./public"/>
+    </target>
+
+    <!--***************************************************************************-->
+    <target name="test_make_feature">
+        <echo msg="Create Feature Test..."/>
+        <exec command="php artisan make:test Api/Stat/CourierStatTest" dir="."/>
+    </target>
+
+    <target name="test_make_unit">
+        <echo msg="Create Unit Test..."/>
+        <exec command="php artisan make:test Order/CanAddCourierTest --unit" dir="."/>
+    </target>
+
+    <!--***************************************************************************-->
+    <target name="make_controller">
+        <echo msg="Create Controller..."/>
+        <exec command="php artisan make:controller Api/v1/Rating/RatingController" dir="."/>
+    </target>
+
+    <target name="make_model">
+        <echo msg="Create Model..."/>
+        <exec command="php artisan make:model Core/Models/Rating" dir="."/>
+        <exec command="php artisan make:model Core/Models/PushMessage --migration" dir="."/>
+    </target>
+
+    <target name="make_form">
+        <echo msg="Create request form..."/>
+        <exec command="php artisan make:request Rating/AddRatingRequest" dir="."/>
+    </target>
+
+    <target name="make_event">
+        <echo msg="Create event..."/>
+        <exec command="php artisan event:generate" dir="."/>
+    </target>
+
+    <target name="make_middleware">
+        <echo msg="Create middleware..."/>
+        <exec command="php artisan make:middleware ClientOnly" dir="."/>
+    </target>
+
+    <target name="make_factory">
+        <echo msg="Create factory..."/>
+        <exec command="php artisan make:factory OrderFactory --model=Order" dir="."/>
+    </target>
+
+    <target name="make_job">
+        <echo msg="Create factory..."/>
+        <exec command="php artisan make:job SendReminderPush" dir="."/>
+    </target>
+
+    <target name="make_command">
+        <echo msg="Create command..."/>
+        <exec command="php artisan make:command RemindCourier" dir="."/>
+    </target>
+    <!--***************************************************************************-->
+
+    <target name="seeder_make">
+        <echo msg="Create seeder..."/>
+        <exec command="php artisan make:seeder UsersTableSeeder" dir="."/>
+    </target>
+
+    <target name="migration_new">
+        <echo msg="Create migration..."/>
+        <!--<exec command="php artisan make:migration create_user_settings_table &#45;&#45;create=user_settings" dir="."/>-->
+        <exec command="php artisan make:migration create_stars_phrases_table --create=stars_phrases" dir="."/>
+    </target>
+
+    <target name="migration_edit">
+        <echo msg="Create migration to edit table..."/>
+        <exec command="php artisan make:migration add_points_to_orders_table --table=orders" dir="."/>
+    </target>
+
+    <target name="migrate_refresh">
+        <echo msg="Migrate refresh ..."/>
+        <exec command="php artisan migrate:refresh --seed" dir="."/>
+    </target>
+
+    <target name="migrate">
+        <echo msg="Apply migrations ..."/>
+        <exec command="php artisan migrate" dir="."/>
+    </target>
+
+    <target name="migrate_rollback">
+        <echo msg="Migrate new ..."/>
+        <exec command="php artisan migrate:rollback --step=1" dir="."/>
+    </target>
+
+
+    <!--***************************************************************************-->
+    <target name="helper_sim_link">
+        <echo msg="Create public storage link ..."/>
+        <exec command="php artisan storage:link" dir="."/>
+    </target>
+
+    <target name="helper_clean_cash">
+        <echo msg="Clearing cash ..."/>
+        <exec command="php artisan cache:clear" dir="."/>
+    </target>
+
+    <target name="helper_routs_cash">
+        <echo msg="Create public storage link ..."/>
+        <exec command="php artisan route:cache" dir="."/>
+    </target>
+
+    <target name="helper_routs_un_cash">
+        <echo msg="Create public storage link ..."/>
+        <exec command="php artisan route:clear" dir="."/>
+    </target>
+
+
+    <!--***************************************************************************-->
+
+    <target name="build" depends="apidoc">
+
+    </target>
+</project>
