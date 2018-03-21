@@ -31,4 +31,9 @@ class NoteRepository extends ADefaultRepository {
 			                   'description' => $params['description'],
 		                   ] );
 	}//edit
+
+	public function getAllForUser($user_id)
+	{
+		return $this->getAllWithClause(['user_id' => $user_id]);
+	}//getAllForUser
 }//NoteRepository

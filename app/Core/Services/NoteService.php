@@ -28,4 +28,10 @@ class NoteService
 		return $this->noteRep->edit($params);
 	}// edit
 
+
+	public function getAllForUser($user_id)
+	{
+		return $this->noteRep->getAllForUser($user_id);
+	}//getAllForUser
+
 }//NoteService

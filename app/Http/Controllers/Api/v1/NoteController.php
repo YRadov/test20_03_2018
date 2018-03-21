@@ -65,4 +65,23 @@ class NoteController extends Controller
 		return $this->apiNoteResp->edited($request->input('note_id'));
 	}// edit
 
+
+	/**
+	 * @api {post} /api/v1/note/list  All User's Notes
+	 *
+	 * @apiHeaderExample {json} Header-Example:
+	 * {
+	 *      "Accept"        : "application/json"
+	 *      "Authorization" : "Bearer d1ud5yQnjO3eeg64ZkmYupwGh6fKZJ4W"
+	 * }
+	 */
+	public function getAllForUsers()
+	{
+		$user_id = \Auth::id();
+		$notes = $this->noteService->getAllForUser($user_id);
+
+		return $this->apiNoteResp->allForUser($notes);
+
+	}//getAllForUsers
+
 }//NoteController

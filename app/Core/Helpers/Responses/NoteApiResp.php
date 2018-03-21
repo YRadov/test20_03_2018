@@ -8,6 +8,7 @@ namespace App\Core\Helpers\Responses;
 
 
 use App\Core\Models\Post;
+use App\Core\Transformers\NoteTransformer;
 
 class NoteApiResp  extends AApiResp
 {
@@ -32,5 +33,13 @@ class NoteApiResp  extends AApiResp
 		];
 
 	}//edited
+
+
+	public function allForUser($notes)
+	{
+		$resp = new NoteTransformer($notes);
+
+		return $resp;
+	}//allForUser
 
 }//NoteApiResp
