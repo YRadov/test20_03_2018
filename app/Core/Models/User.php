@@ -50,4 +50,10 @@ class User extends Authenticatable {
 		'remember_token',
 		'api_token',
 	];
+
+	public function notes()
+	{
+		return $this->hasMany('App\Core\Models\Post', 'user_id', 'id');
+	}//notes
+
 }// User

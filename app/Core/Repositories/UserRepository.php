@@ -25,7 +25,7 @@ class UserRepository extends ADefaultRepository
 			]
 		);
 	}//addNew
-	
+
 	public function getById($user_id)
 	{
 		return $this->getOne($user_id);

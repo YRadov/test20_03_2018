@@ -28,7 +28,7 @@ class UserService
 
 	public function getUser()
 	{
-		$user_id = \Auth::user()->id;
+		$user_id = \Auth::id();
 		return $this->userRep->getById($user_id);
 	}//getUser
 

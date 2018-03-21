@@ -28,4 +28,11 @@ Route::group( [ 'prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth
 	/** USER */
 	Route::get( '/user-details', "UserController@details" )->name( 'user_details' );
 
+	/** NOTE */
+	Route::group( [ 'prefix' => 'note'], function () {
+
+		Route::post( '/create', "NoteController@createNew" )->name( 'note_create' );
+
+	} );//NOTE
+
 } );
