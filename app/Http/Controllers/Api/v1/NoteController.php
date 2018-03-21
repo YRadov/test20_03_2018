@@ -19,9 +19,11 @@ class NoteController extends Controller
 		$this->apiNoteResp = $apiNoteResp;
 	}
 
+	/**
+	 * @api {post} /api/v1/note/create  Create New Note
+	 */
 	public function createNew(NoteCreateRequest $request)
 	{
-
 		$note = $this->noteService->createNew($request->all());
 
 		if (!$note) {
