@@ -54,7 +54,7 @@
 
     <target name="make_form">
         <echo msg="Create request form..."/>
-        <exec command="php artisan make:request Note/NoteCreateRequest" dir="."/>
+        <exec command="php artisan make:request Note/NoteEditRequest" dir="."/>
     </target>
 
     <target name="make_event">

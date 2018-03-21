@@ -7,6 +7,7 @@ use App\Core\Models\Post;
 use App\Core\Services\NoteService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Note\NoteCreateRequest;
+use App\Http\Requests\Note\NoteEditRequest;
 
 class NoteController extends Controller
 {
@@ -21,6 +22,12 @@ class NoteController extends Controller
 
 	/**
 	 * @api {post} /api/v1/note/create  Create New Note
+	 *
+	 * @apiHeaderExample {json} Header-Example:
+	 * {
+	 *      "Accept"        : "application/json"
+	 *      "Authorization" : "Bearer d1ud5yQnjO3eeg64ZkmYupwGh6fKZJ4W"
+	 * }
 	 */
 	public function createNew(NoteCreateRequest $request)
 	{
@@ -37,5 +44,25 @@ class NoteController extends Controller
 
 	}// createNew
 
+
+	/**
+	 * @api {post} /api/v1/note/update  Edit Note
+	 *
+	 * @apiHeaderExample {json} Header-Example:
+	 * {
+	 *      "Accept"        : "application/json"
+	 *      "Authorization" : "Bearer d1ud5yQnjO3eeg64ZkmYupwGh6fKZJ4W"
+	 * }
+	 */
+	public function edit(NoteEditRequest $request)
+	{
+		$res = $this->noteService->edit($request->all());
+
+		if (!$res) {
+			return $this->apiNoteResp->fail("Edit failed");
+		}
+
+		return $this->apiNoteResp->edited($request->input('note_id'));
+	}// edit
 
 }//NoteController

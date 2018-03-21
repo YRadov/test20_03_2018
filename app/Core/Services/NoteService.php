@@ -22,4 +22,10 @@ class NoteService
 		return $this->noteRep->addNew($params);
 	}// createNew
 
+
+	public function edit($params)
+	{
+		return $this->noteRep->edit($params);
+	}// edit
+
 }//NoteService

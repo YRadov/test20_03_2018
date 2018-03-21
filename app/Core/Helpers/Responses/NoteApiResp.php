@@ -21,4 +21,16 @@ class NoteApiResp  extends AApiResp
 		];
 	}//createNew
 
+
+	public function edited($note_id)
+	{
+		return [
+			'status' => self::SUCCESS,
+			'data' => [
+				'note id' => $note_id,
+			]
+		];
+
+	}//edited
+
 }//NoteApiResp

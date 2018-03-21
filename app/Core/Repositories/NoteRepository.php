@@ -23,4 +23,12 @@ class NoteRepository extends ADefaultRepository {
 		);
 	}//addNew
 
+
+	public function edit( $params ) {
+		return $this->model->where( 'id', $params['note_id'] )
+		                   ->update( [
+			                   'title'       => $params['title'],
+			                   'description' => $params['description'],
+		                   ] );
+	}//edit
 }//NoteRepository

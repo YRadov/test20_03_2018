@@ -30,9 +30,8 @@ Route::group( [ 'prefix' => 'v1', 'namespace' => 'Api\v1', 'middleware' => 'auth
 
 	/** NOTE */
 	Route::group( [ 'prefix' => 'note'], function () {
-
 		Route::post( '/create', "NoteController@createNew" )->name( 'note_create' );
-
+		Route::post( '/update', "NoteController@edit" )->name( 'note_edit' );
 	} );//NOTE
 
 } );
